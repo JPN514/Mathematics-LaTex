@@ -1,0 +1,129 @@
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+% Theme choice:
+\usetheme{Copenhagen}
+\usecolortheme{wolverine}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage[absolute,overlay]{textpos}
+\graphicspath{ {./images/} }
+
+
+% Title page details: 
+\title{Contraction Mapping Theorem} 
+
+\author{}
+\date{}
+\logo{}
+
+
+\newtheorem*{remark}{Remark}
+\newtheorem{prop}{Proposition}[section]
+\newtheorem*{notation}{Notation}
+\newtheorem*{ex}{Examples:}
+
+
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+    
+    
+\begin{textblock*}{10cm}(1cm,4.5cm)
+This investigates:
+\begin{enumerate}
+        \item Contractions on a metric space
+        \item Continuity of contractions
+        \item Examples of contractions
+        \item Contraction Mapping Theorem and applications
+    \end{enumerate}
+\end{textblock*}    
+\end{frame}
+
+% Remove logo from the next slides
+\logo{}
+
+
+% Outline frame
+\begin{frame}{History and Motivation}
+We will explore the Contraction Mapping Theorem, otherwise known as the Banach Fixed Point Theorem, which provides a unification between the extensive theory of metric spaces and problems of existence and uniqueness to differential, integral, functional and algebraic equations. The technique used to prove the theorem also provides a method to find the unique fixed point. This result is named after Polish mathematician Stefan Banach, who made pioneering contributions in the field of functional analysis and stated this result in the early 1900s.
+\end{frame}
+
+
+% Lists frame
+
+\begin{frame}{Contraction Maps}
+\begin{definition}
+Let $(X,d)$ be a metric space and $f:X\to X$ be a map/function. We say $f$ is a $contraction$ if there exists $K\in[0,1)$ such that 
+\begin{align}
+d(f(x),f(y))\leq Kd(x,y)\text{, for all } x,y\in X.\label{eq:defn}\tag{*}
+\end{align}
+\end{definition}
+Essentially, a contraction guarantees the distance between the images $f(x),f(y)$ in the metric space is less the distance between $x$ and $y$. \newline
+We note that every contraction is continuous. 
+\end{frame}
+    
+\begin{frame}{Continuity}
+\begin{proof}[Proof of continuity]
+Let $(X,d)$ be a metric space and $f$ be a contraction on $X$. Let $\epsilon>0$ be arbitrary. Since $f$ is a contraction there exists $K\in[0,1)$ such that the property $\eqref{eq:defn}$ holds. 
+\begin{align*}
+\text{We set }  \delta = \epsilon \text{ and suppose that } d(x,y)& < \delta,   \text{ it then follows that, } \\ 
+d(f(x),f(y))\leq Kd(x,y) <& K\delta = K\epsilon < \epsilon.
+\end{align*}
+Since $x,y$ were arbitrary points, we conclude $f$ is continuous on $X$.
+\end{proof}
+
+\end{frame} 
+
+\begin{frame}{Examples of Contractions}
+\begin{example}
+     Consider $\mathbb{R}$ with the Euclidean metric. Let $f:\mathbb{R}\to\mathbb{R}$ be defined by $$f(x)=\frac{x}{a} \text{, where } a\in\mathbb{R} \text{ such that } a>1.$$
+    \begin{align*}
+        \text{Then } d(f(x),f(y))=&\vert f(x)-f(y)\vert = \big\vert\frac{x}{a}-\frac{y}{a}\big\vert \\ =& \frac{1}{a}\vert x-y\vert = \frac{1}{a}d(x,y).
+    \end{align*}
+    Since $a>1$, we have $\frac{1}{a}\in[0,1)$ so f is a contraction on $\mathbb{R}$.
+\end{example}
+
+
+
+\end{frame}
+
+\begin{frame}{Examples of Contractions}
+\begin{example}
+Let $X=[0,1]$ with Euclidean metric and $f(x)=\frac{1}{5}(x^{2}+x+1)$ for all $x\in[0,1]$. Notice that $f(x)\geq 0$ for all $x\in[0,1]$ and $f(x)\leq \frac{1}{5}(1+1+1) =\frac{3}{5}$, for all $x\in[0,1]$. Therefore, $f:[0,1]\to[0,1]$. Furthermore, for any $x,y\in[0,1]$,
+\begin{align*}
+    d(f(x),f(y)) =& \big\vert\frac{1}{5}(x^{2}+x+1)-\frac{1}{5}(y^{2}+y+1)\big\vert \\
+    =& \frac{1}{5}\vert x^{2}+x-y^{2}-y \vert = \frac{1}{5}\vert (x-y)(x+y) + (x-y)\vert \\
+    \leq& \frac{1}{5}\vert 2(x-y)\vert + \frac{1}{5}\vert x-y\vert = \frac{3}{5}\vert x-y \vert = \frac{3}{5}d(x,y).
+\end{align*}
+Hence, $f$ is a contraction on $[0,1]$.
+\end{example}
+\end{frame}
+
+\begin{frame}{Contraction Mapping Theorem}
+\begin{theorem}[Contraction Mapping/Banach Fixed Point Theorem]
+Let $(X,d)$ be a complete metric space with $f:X\to X$ a contraction. Then there exists a unique point $x^{*}\in X$ such that $$f(x^{*})=x^{*}\text{,}$$ and we call $x^{*}$ a fixed point of $f$ in $X$.
+\end{theorem}
+
+
+\end{frame}
+
+\begin{frame}{Contraction Mapping Theorem}
+\begin{remark}
+The unique fixed point can be found as follows. Take an arbitrary $x_{0}\in X$ and take the sequence $(x_{n})_{n=1}^{\infty}$ where $x_{n}=f(x_{n-1})$.  $$\text{Then, }\lim_{n\to\infty}x_{n}=x^{*}.$$
+The sequence $(x_{n})_{n=1}^{\infty}$ is necessarily a Cauchy sequence (although we will not prove this here) and the completeness of the metric space $X$ guarantees that any Cauchy sequence converges to a limit in $X$, which ensures the fixed point $x^{*}\in\ X$.
+\end{remark}
+    
+\end{frame}
+
+\begin{frame}{An Application}
+\begin{example}[An algebraic equation]
+We will use the Contraction Mapping Theorem to show that the equation $x=\frac{1}{5}(x^{2}+x+1)$ has a unique solution in the interval $[0,1]$. \newline  Firstly, we consider $[0,1]$ with the Euclidean metric and observe that this a complete metric space, as $[0,1]$ is a closed subset of $\mathbb{R}$ and $\mathbb{R}$ with the Euclidean metric is complete. Next, recall from above that $f(x)=\frac{1}{5}(x^{2}+x+1)$ is a contraction on $[0,1]$. Now, using the Contraction Mapping Theorem, we deduce $f(x)$ has a unique fixed point $x^{*}\in[0,1]$ such that $f(x^{*})=x^{*}$. This is equivalent to the existence of a unique $x^{*}\in[0,1]$ such that $x^{*}=\frac{1}{5}((x^{*})^{2}+x^{*}+1)$.
+\end{example}    
+\end{frame}
+
+
+\end{document}

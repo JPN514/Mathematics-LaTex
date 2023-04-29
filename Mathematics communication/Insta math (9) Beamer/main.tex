@@ -1,0 +1,55 @@
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+% Theme choice:
+\usetheme{Copenhagen}
+\usecolortheme{wolverine}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{pgfplots}
+\graphicspath{ {./images/} }
+
+
+% Title page details: 
+\title{Functional Calculus} 
+
+\author{}
+\date{}
+\logo{}
+
+
+\newtheorem*{remark}{Remark}
+\newtheorem{prop}{Proposition}[section]
+\newtheorem*{notation}{Notation}
+\newtheorem*{ex}{Examples:}
+
+
+
+\begin{document}
+
+% Title page frame
+
+\begin{frame}{Functional Calculus}
+
+\begin{textblock*}{11cm}(1cm,2cm)
+A functional calculus constructs an operator $f(T)$, extending a given function $f$ into a function with an operator argument. For example, this is useful when considering polynomials or the exponential of an operator $T$. Specifically, if $T$ is an $n\times n$ matrix with complex entries, and $f$ is the entire complex valued function given by $f(\zeta)=e^{\zeta}$, we have $$f(T)=e^{T}=I+T+\frac{T^{2}}{2!}+\frac{T^{3}}{3!}+\cdots$$
+We can go on to define several functional calculi for different classes of functions together with several types of operators including bounded, sectorial and self-adjoint operators.
+\end{textblock*}
+\end{frame}
+
+% Remove logo from the next slides
+\logo{}
+
+
+% Outline frame
+\begin{frame}{Bounded Holomorphic Functional Calculus}
+\begin{textblock*}{11cm}(1cm,2cm)
+Let $T$ be a bounded operator on a Banach space $\mathcal{X}$ and let $\Omega\subset\mathbb{C}$ be an open set with the spectrum $\sigma(T)\subset\Omega$. We denote the space of all complex valued holomorphic functions on $\Omega$ by $H(\Omega)$. 
+\begin{block}{}
+The $H(\Omega)$ functional calculus for bounded operators $\Phi_{B}\colon H(\Omega)\to\mathcal{L}(\mathcal{X})$ for a function $f\in H(\Omega)$, defines the operator $\Phi_{B}(f):=f(T)\in\mathcal{L}(\mathcal{X})$ as follows $$f(T) = \frac{1}{2\pi i}\int_{\gamma}f(\zeta)R_{T}(\zeta)d\zeta = \frac{1}{2\pi i}\int_{\gamma}f(\zeta)(\zeta I - T)^{-1}d\zeta,$$ where the contour $\gamma$ envelopes  $\sigma(T)$ in $\Omega$ and $R_{T}(\zeta)$ is the resolvent of $T$.
+\end{block}
+\end{textblock*}
+\end{frame}
+
+\end{document}

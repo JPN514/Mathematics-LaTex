@@ -1,0 +1,133 @@
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+% Theme choice:
+\usetheme{Copenhagen}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage[absolute,overlay]{textpos}
+\graphicspath{ {./images/} }
+
+% Title page details: 
+\title{Outer Lebesgue Measure} 
+
+\author{}
+\date{}
+\logo{\large \LaTeX{}}
+
+
+\newtheorem*{remark}{Remark}
+\newtheorem{prop}{Proposition}[section]
+\newtheorem*{notation}{Notation}
+\newtheorem*{ex}{Examples:}
+
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+    
+    \begin{wrapfigure}{r}{0.25\textwidth}
+    \centering
+    \includegraphics[width=0.25\textwidth]{images/Lebesgue_2.jpeg}
+    
+    
+\end{wrapfigure}
+\begin{textblock*}{10cm}(1cm,4.5cm)
+This investigates:
+\begin{enumerate}
+        \item Outer Lebesgue Measure
+        \item Properties
+        \item Examples 
+    \end{enumerate}
+\end{textblock*}    
+\end{frame}
+
+% Remove logo from the next slides
+\logo{}
+
+
+% Outline frame
+\begin{frame}{Introduction}
+\begin{definition}[Outer Lebesgue Measure]
+Let $E$ be a subset of $\mathbb{R}$. The Outer Lebesgue Measure $\lambda^{*}(E)$ is the non-negative number defined as 
+\begin{align*}
+\lambda^{*}(E)=\text{inf}\big\{&\sum_{j=1}^{\infty}\vert I_{j}\vert:\text{every } I_{j} \text{ is an open or} \\ & \text{empty interval and } \bigcup_{j=1}^{\infty}I_{j}\supseteq E\big\}
+\end{align*}
+where inf is the infimum, which we can think about as the greatest lower bound of the set $E$.
+\end{definition}
+\end{frame}
+
+
+% Lists frame
+
+\begin{frame}{Remarks on $\lambda^{*}$}
+\begin{block}{Definition (continued).}
+\begin{enumerate}
+    \item For every open interval $I_{j}=(a_{j},b_{j})$, we have $a_{j}\leq b_{j}$, and we set $\vert I_{j}\vert = b_{j}-a_{j}$;
+    \item Allowing $a_{j}=b_{j}$, we have $I_{j}=\emptyset$, so $\vert I_{j}\vert=0$.
+\end{enumerate}
+\end{block}
+
+\begin{remark}
+\begin{enumerate}
+    \item $\lambda^{*}(E)$ is defined for all $E\subseteq\mathbb{R}$ and we always have $\lambda^{*}(E)\geq 0$;
+    \item $\lambda^{*}(E)$ can be equal to $+\infty$;
+    \item For $I_{j}$'s open intervals with $\bigcup_{j\geq 1}I_{j}\supseteq E$ then we have \[\lambda^{*}(E)\leq\sum_{j=1}^{\infty}\vert I_{j}\vert\text{.}\tag{$1$}\label{eqn:(1)}\]
+\end{enumerate}
+\end{remark}
+
+\end{frame}
+    
+\begin{frame}{Properties of Outer Lebesgue Measure}
+\begin{block}{Basic Properties}
+\begin{enumerate}
+    \item $\lambda^{*}(\emptyset)=0$.
+    \item For all $x\in\mathbb{R}$, we have $\lambda^{*}(\{x\})=0$.
+    \item For $E_{1},E_{2}\subseteq\mathbb{R}$ with $E_{1}\subseteq E_{2}$, then $\lambda^{*}(E_{1})\leq \lambda^{*}(E_{2})$.
+    \item For a countable collection of sets $\big(E_{k})_{k\geq1}$ we have, $$\lambda^{*}\big(\bigcup_{k=1}^{\infty}E_{k}\big)\leq \sum_{k=1}^{\infty}\lambda^{*}(E_{k}).$$
+    \item For all $x\in\mathbb{R}$ and any $E\subseteq\mathbb{R}$, $\lambda^{*}(E+x)=\lambda^{*}(E)$, where $E+x=\{y+x:y\in E\}$ is the translation of $E$.
+\end{enumerate}
+\end{block}
+\end{frame} 
+
+\begin{frame}{Finite and Countable Sets with Examples}
+\begin{example}
+For any $E\subseteq\mathbb{R}$ which is finite or countable, we have $\lambda^{*}(E)=0$. In particular, $\lambda^{*}(\mathbb{Q})=0$.
+\end{example}
+\begin{proof}
+Consider $E=\{q_{1},q_{2},...\}$ with $q_{i}\in\mathbb{R}$ for all $i$. We know $0\leq\lambda^{*}(E)$ and that $E$ is the union of a countable collection of sets $\{q_{i}\}$, so $E=\bigcup_{i=1}^{\infty}\{q_{i}\}$. We then have,
+$$\lambda^{*}(E)=\lambda^{*}\big(\bigcup_{i=1}^{\infty}\{q_{i}\}\big)
+\leq\sum_{i=1}^{\infty}\lambda^{*}(\{q_{i}\})=\sum_{i=1}^{\infty}0=0,$$
+as $\lambda^{*}(\{q_{i}\})=0$ for all $i$. Thus, $\lambda^{*}(\mathbb{Q})=0$.
+\end{proof}
+\end{frame}
+
+\begin{frame}{Further Examples}
+\begin{Examples}
+\begin{enumerate}
+    \item For a closed interval $I=[a,b]$, the outer Lebesgue measure coincides with its length, that is, $\lambda^{*}(I)=b-a$.
+    \item $\lambda^{*}(\mathbb{R})=+\infty$.
+    \item $\lambda^{*}([0,1]\setminus\mathbb{Q})=1.$
+\end{enumerate}
+\end{Examples}
+
+\end{frame}
+
+\begin{frame}{Further Examples}
+\begin{proof}[Proof of 3]
+Before we begin note that, $\lambda^{*}([0,1])=1$ as $[0,1]$ is a closed interval. Furthermore, we have that $\mathbb{Q}\cap[0,1]$ is countable since it is simply all the rational numbers within $[0,1]$ and that $([0,1]\setminus\mathbb{Q})\subseteq[0,1]$. We can then use basic properties $3$ and $4$ of the outer Lebesgue measure to show
+\begin{align*}
+ 1= \lambda^{*}([0,1])&=\lambda^{*}\big((\mathbb{Q}\cap[0,1])\cup([0,1]\setminus\mathbb{Q})\big)
+ \\& \leq \lambda^{*}\big((\mathbb{Q}\cap[0,1])\big) + \lambda^{*}\big(([0,1]\setminus\mathbb{Q})\big) 
+ \\& = 0 + \lambda^{*}\big(([0,1]\setminus\mathbb{Q})\big)
+ \\& \leq \lambda^{*}([0,1]) = 1.
+\end{align*}
+Thus, $\lambda^{*}\big([0,1]\setminus\mathbb{Q}\big)=1$.
+\end{proof}
+\end{frame}
+
+
+
+\end{document}

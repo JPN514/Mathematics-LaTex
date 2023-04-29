@@ -1,0 +1,77 @@
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+% Theme choice:
+\usetheme{Copenhagen}
+\usecolortheme{wolverine}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{pgfplots}
+\graphicspath{ {./images/} }
+
+
+% Title page details: 
+\title{Heisenberg's Uncertainty Principle} 
+
+\author{}
+\date{}
+\logo{}
+
+
+\newtheorem*{remark}{Remark}
+\newtheorem{prop}{Proposition}[section]
+\newtheorem*{notation}{Notation}
+\newtheorem*{ex}{Examples:}
+
+
+
+\begin{document}
+
+% Title page frame
+
+\begin{frame}{Fourier Transform and Heisenberg's Inequality}
+
+\begin{textblock*}{11cm}(1cm,1.3cm)
+Heisenberg's inequality is an illustration that a function and its Fourier transform cannot be simultaneously "highly localised". This can be deduced intuitively by considering what happens if we were to "spread out" a function f, using some constant $a>0$, we have, $$g(x)=f(ax), \text{ then, } \hat{g}(\xi)=\frac{1}{a}\hat{f}\bigg(\frac{\xi}{a}\bigg).$$
+Heisenberg's inequality is a more fundamental statement, specifically for functions in the Schwartz class, denoted $\mathcal{S}(\mathbb{R})$. Informally, a Schwartz class function $f$ is differentiable to all orders and $f$ together with its derivatives are rapidly decreasing as $|x|\to\infty$.
+\end{textblock*}
+\end{frame}
+
+% Remove logo from the next slides
+\logo{}
+
+
+% Outline frame
+\begin{frame}{Fourier Transform and Heisenberg's Inequality}
+\begin{textblock*}{11cm}(1cm,1.3cm)
+
+\begin{block}{Heisenberg's Inequality}
+Let $f\in\mathcal{S}$ with $$\int_{\mathbb{R}}|f(x)|^{2}dx=1.$$
+Then $$\Bigg(\int_{\mathbb{R}}x^{2}|f(x)|^{2}dx\Bigg)\Bigg(\int_{\mathbb{R}}\xi^{2}|\hat{f}(\xi)|^{2}d\xi\Bigg) \geq \frac{\pi}{2}.$$
+\end{block}
+Here, the two integrals on the left hand side of Heisenberg's inequality measure the spread of the function $f$ and its Fourier transform $\hat{f}$. You may recognise these as the variances of certain continuous random variables with probability distributions $|f(x)|^{2}$ and $|\hat{f}(\xi)|^{2}$, respectively.
+\end{textblock*}
+\end{frame}
+
+\begin{frame}{Fourier Transform and Heisenberg's Inequality}
+\begin{textblock*}{11cm}(1cm,1.3cm)
+Since the product of these measures of spread is bounded below by a constant, we deduce that the function $f$ and its Fourier transform cannot be simultaneously 
+highly localised/concentrated.
+
+
+\begin{block}{}
+We note that Heisenberg's inequality is equivalent to:
+$$\Bigg(\int_{\mathbb{R}}(x-x_{0})^{2}|f(x)|^{2}dx\Bigg)\Bigg(\int_{\mathbb{R}}(\xi-\xi_{0})^{2}|\hat{f}(\xi)|^{2}d\xi\Bigg) \geq \frac{\pi}{2},$$
+where $x_{0},\xi_{0}\in\mathbb{R}$; this is a slightly stronger statement.
+\end{block}
+
+\begin{remark}
+Throughout we have taken the Fourier transform of $f$ to be defined as 
+$$\hat{f}(\xi)=\int_{\mathbb{R}}f(x)e^{-ix\xi}dx.$$
+\end{remark}
+
+\end{textblock*}
+\end{frame}
+
+\end{document}

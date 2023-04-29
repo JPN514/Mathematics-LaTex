@@ -1,0 +1,86 @@
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+% Theme choice:
+\usetheme{Copenhagen}
+
+% Title page details: 
+\title{Some Homeomorphisms} 
+\author{}
+\date{}
+\logo{\large \LaTeX{}}
+
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+\end{frame}
+
+% Remove logo from the next slides
+\logo{}
+
+
+% Outline frame
+\begin{frame}{Introduction}
+    \begin{definition}
+Let $(X,\tau_{X})$ and $(Y,\tau_{Y})$ be topological spaces. Then $f:X\to Y$ is a homeomorphism if $f$ is continuous, bijective and its inverse $f^{-1}:Y\to X$ is continuous.    
+    \end{definition}
+Throughout we consider the Euclidean topology on $\mathbb{R}$ and the intervals of $\mathbb{R}$, both open and closed.    
+\end{frame}
+
+
+% Lists frame
+\section{}
+\begin{frame}{}
+\begin{block}{}
+$1.$ Prove there exists a homeomorphism $f:(0,2)\to(0,18)$.
+\end{block}
+\newline
+\begin{proof}
+Remember that a $homeomorphism$ is a bijective continuous function whose inverse is also continuous.
+From this we consider the $f$ as follows, 
+$$ f: x \mapsto 9x \text{ for } x\in(0,2) $$ which then allows us to define 
+$$ f^{-1}:(0,18)\to(0,2) \text{ by } f^{-1}(y)=\frac{y}{9}\text{.} $$
+\renewcommand{\qedsymbol}{}
+\end{proof}
+\end{frame}
+    
+\begin{frame}
+\begin{block}{}
+$1.$ Prove there exists a homeomorphism $f:(0,2)\to(0,18)$.
+\end{block}
+\begin{proof}[Proof cont.]
+Now, since $f$,$f^{-1}$ are both polynomials, they are continuous on $\mathbb{R}$ so are clearly continuous on the subset of $\mathbb{R}$ we are working in. To show $f$ is bijective recall that a polynomial $P(x)$ is bijective if and only if $P'(x)$ never changes sign. We can see that $f'(x)=9$, which is constant implying that $f$ is bijective. Therefore, we have that $f$ is a homeomorphism.
+\end{proof}
+\end{frame} 
+
+\begin{frame}{}
+\begin{block}{}
+$2.$ Prove there exists a homeomorphism $f:\mathbb{R}\to(-37,37)$.
+\end{block}
+\newline
+\newline Before continuing it is helpful to note that functions with asymptotic properties are effective when considering $\mathbb{R}$ as one of the sets. Below we shall work with some trigonometric functions with the required properties.
+\end{frame}
+
+\begin{frame}
+\begin{block}{}
+$2.$ Prove there exists a homeomorphism $f:\mathbb{R}\to(-37,37)$.
+\end{block}
+\begin{proof}
+We define $f:\mathbb{R}\to(-37,37)$ as follows,
+$$f(x)=\frac{74}{\pi}\arctan{(x)}$$ which is a continuous and bijective function. It follows that its inverse $f^{-1}(y)=\tan{\Big(\frac{\pi y}{74}\Big)}$ is continuous also because it is the composition of trigonometric and polynomial functions.
+\end{proof}
+\end{frame}
+
+\begin{frame}{}
+$3.$ Does there exist a homeomorphism $f:\mathbb{R}\to[-1,1]$?
+\begin{proof}
+Suppose there does exist a homeomorphism $f:\mathbb{R}\to[-1,1]$ and consider its inverse $f^{-1}:[-1,1]\to\mathbb{R}$ which would necessarily be a continuous and bijective function. However, given $f^{-1}$ is continuous and $[-1,1]$ is a closed interval, $f^{-1}$ is bounded and attains a maximum and a minimum by the Extreme Value Theorem and therefore cannot be surjective. Thus, no such homeomorphism exists.
+\end{proof}    
+\end{frame}
+
+
+
+\end{document}

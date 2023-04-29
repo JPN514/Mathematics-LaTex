@@ -1,0 +1,198 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{blindtext}
+\usepackage[a5paper, total={4.5in, 6in}]{geometry}
+
+
+\usepackage{graphicx} %package to manage images
+\usepackage[rightcaption]{sidecap}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\usepackage{natbib}
+\setlength{\bibsep}{0.0pt}
+\setcitestyle{square}
+\usepackage{sectsty}
+
+\sectionfont{\fontsize{22}{0}\selectfont\centering}
+%\subsectionfont{\fontsize{11}{13}\selectfont}
+
+\setlength{\footskip}{20pt}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{asypictureB}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{amsmath,empheq}
+
+\title{Meromorphic Functions}
+\date{}
+
+\newtheorem*{definition}{Definition}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{remark}{Remark}
+\newtheorem{prop}{Proposition}
+\newtheorem*{notation}{Notation}
+\newtheorem*{ex}{Examples:}
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+
+\section*{Meromorphic functions}
+This work builds on the Riemann sphere $\Sigma$ which represents the extended complex numbers $\mathbb{C}_{\infty}$. We investigate a class of functions on $\mathbb{C}$ and how they behave on the Riemann sphere.
+
+\subsection*{Preliminaries}
+To begin this section we revisit some definitions and properties of functions of a single complex variable. We consider a function $f:\Omega\to\mathbb{C}$ where $\Omega\subset\mathbb{C}$ is an open set.
+\begin{definition}
+A function $f:\Omega\to\mathbb{C}$ is bounded if there exists $K\in\mathbb{R}$ such that $|f(z)|<K$ for all $z\in\Omega$. A function which is not bounded is said to be unbounded.
+\end{definition}
+
+\begin{definition}
+A set is said to be compact if it is both closed and bounded.
+\end{definition}
+
+\begin{definition}
+A function $f:\Omega\to\mathbb{C}$ is said to be differentiable at $z_{0}\in\Omega$ if the following limit $$f^{'}(z_{0})=\lim_{z\to z_{0}}\frac{f(z)-f(z_{0})}{z-z_{0}}$$ exists. We say that $f^{'}(z_{0})$ is the derivative of f at the point $z_{0}$.
+\end{definition}
+
+\begin{definition}
+We say that $f:\Omega\to\mathbb{C}$ is holomorphic on $\Omega$ if f is differentiable at every $z_{0}\in\Omega$ and denote this as $f\in\mathcal{H}(\Omega)$, where $\mathcal{H}(\Omega)$ is the set of all holomorphic functions on $\Omega$. If we have that $f\in\mathcal{H}(\mathbb{C})$ then $f$ is said to be entire.
+\end{definition}
+
+\begin{definition}
+Let $f\in\mathcal{H}(\Omega\setminus\{z_{0}\})$ where $z_{0}\in\Omega$. Then $z_{0}$ is an \italisolated{isolated singularity} of $f$.\cite[p.~47]{CAaRS} 
+\end{definition}
+
+\begin{theorem}
+Suppose that $f\in\mathcal{H}(\mathcal{A})$ where $\mathcal{A}=\{z\in\mathbb{C}\mid r_{1}<\mid z-z_{0} \mid<r_{2}\}$, $0\leq r_{1} < r_{2} \leq\infty$ is an annulus. Then there exist unique $a_{n}\in\mathbb{C}$ such that 
+\[ f(z)=\sum_{n=-\infty}^{\infty} a_{n}(z-z_{0})^{n},\tag{$4.1$}\label{eq:4.1}\]
+where the series converges absolutely on $\mathcal{A}$ and uniformly on compact subsets of $\mathcal{A}$. %Furthermore, 
+%\[a_{n}=\frac{1}{2\pi i}\oint_{\mid z-z_{0}\mid=r}\frac{f(z)}{(z-z_{0})^{n+1}}\,dz \tag{4.2}\label{eq:4.2}\]
+%for all $n\in\mathbb{Z}$ and any $r_{1}<r<r_{2}$. 
+The series is called the Laurent series of $f$ around $z_{0}$, and 
+\[ \sum_{n=-\infty}^{-1}a_{n}(z-z_{0})^{n}\tag{4.2}\label{eq:4.3} \] is called its principal part. A definition of the coefficients $a_{n}$ can be found in \cite[Chapter~2]{CAaRS}.
+\end{theorem}
+
+\begin{definition}
+Let $f:\Omega\to\mathbb{C}$ have an isolated singularity at $z_{0}\in\Omega$, and consider the Laurent series of $f$ given in \eqref{eq:4.1}. Then:
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+    \item If the principal part of $f$ at $z_{0}$ \eqref{eq:4.3} contains at least one non-zero term, but the number of such terms is finite then there exists $m\geq1$ such that $a_{-m}\neq0$ and $a_{-m-1}=a_{-m-2}=...=0$. Then we say that $f$ has a pole of order $m$ at $z_{0}$.
+    \item A pole of order $m=1$ is referred to as a simple pole. 
+\end{enumerate}
+For further definitions of other types of singularities see \cite[Chapter~6]{CVaA}.
+\end{definition}
+
+\subsection*{Definition and examples of meromorphic functions}
+The term holomorphic comes from the Greek ``holos" meaning whole and ``morph\=e" meaning form, so a holomorphic function is differentiable on the whole of the domain it is defined on. The term meromorphic comes from the Greek ``meros" meaning part, so a meromorphic function is differentiable on a part of the domain it is defined on.
+
+\begin{definition}
+A set $P$ in $\mathbb{C}$ is discrete if and only if for every $z\in P$ there exists $r>0$ such that $P\cap D(z,r)=\{z\}$; where $D(z,r)=\{w\in\mathbb{C}: \mid w-z\mid < r\}$. 
+\end{definition}
+
+\begin{definition}
+We say that a function f is meromorphic on $\Omega\subset\mathbb{C}$ if there exists a discrete set $P\subset\Omega$ such that $f\in\mathcal{H}(\Omega\setminus{P})$ and each point in P is a pole of f. 
+\begin{notation}
+If f is meromorphic on $\Omega$ we denote this as $f\in\mathcal{M}(\Omega)$, where $\mathcal{M}(\Omega)$ is the set of all meromorphic functions on $\Omega$.
+\end{notation}
+
+\end{definition}
+\begin{ex} The following functions are meromorphic defined on some $\Omega\subseteq\mathbb{C}$.
+\begin{enumerate}
+    \item The function $f:\mathbb{C}\to\mathbb{C}$ defined by $$f(z)=\frac{1}{z},$$ for all $z\in\mathbb{C}$ is meromorphic on $\mathbb{C}$ so $f\in\mathcal{M}(\mathbb{C})$ as the poles of f are $P=\{0\}$ and $f\in\mathcal{H}(\mathbb{C}\setminus\{0\})$.
+    
+    \item The function $g:\mathbb{C}\to\mathbb{C}$ defined by $$g(z)=\frac{z^2}{z^2+25},$$ for all $z\in\mathbb{C}$ is meromorphic on $\mathbb{C}$ so $g\in\mathcal{M}(\mathbb{C})$ as the poles of g are $P=\{5i,-5i\}$ \newline and $g\in\mathcal{H}(\mathbb{C}\setminus\{5i,-5i\})$. We note that both $5i$ and $-5i$ are simple poles of $g$.
+    
+    %\item Let $\Omega=\mathbb{C}\setminus\{0\}$. The function $h:\Omega\to\mathbb{C}$ defined by $$h(z)=e^{\frac{1}{z}},$$ for all $z\in\Omega$ is meromorphic(and holomorphic) on $\Omega$ as h has no poles in $\Omega$.
+    
+    \item Let $P=\{z\in\mathbb{C}\mid \sin(z)=0\}=\{n\pi:n\in\mathbb{Z}\}$. The function $k:\Omega\to\mathbb{C}$ defined by $$k(z)=\frac{1}{\sin(z)},$$ for all $z\in\Omega$ is meromorphic on $\mathbb{C}$  so $k\in\mathcal{M}(\mathbb{C})$ as the poles of k are the elements of the \newline  set P and $k\in\mathcal{H}(\mathbb{C}\setminus{P})$. We can see that P is discrete by taking $r=\frac{\pi}{2}$ then for all $z\in P$ we have $P\cap D(z,r)=\{z\}.$
+\end{enumerate}
+\end{ex}
+
+\begin{remark}
+It is clear to see that for any $\Omega\subseteq\mathbb{C}$ and any function $f:\Omega\to\mathbb{C}$ with $f\in\mathcal{H}(\Omega)$ that necessarily we have $f\in\mathcal{M}(\Omega)$.
+\end{remark}
+
+\subsection*{Meromorphic functions on $\Sigma$}
+\begin{definition}[Meromorphic at infinity]
+Let $f:\Omega\to\mathbb{C}$ be a meromorphic function and for some $R>0$, we have that $\{z:|z|<R\}\subset\Omega$. Then $f$ is meromorphic at $\infty$ if the function $G(z)=f(\frac{1}{z})$ is meromorphic on the set $\{z:|z|<\frac{1}{R}\}$. 
+\end{definition}
+A function $f$ being meromorphic at infinity is equivalent to, for some $R^{'}>R$, $f$ has no poles in \newline $\{z\in\mathbb{C}:R^{'}<|z|<\infty\}$ and that infinity is a pole of $f$. See \cite[Chapter~4]{Krantz} for further discussion on singularities at infinity.
+Before we prove the result that meromorphic functions on $\Sigma$ are precisely rational functions we state a definition which will be useful for the proof.
+
+\begin{definition}
+We call $\mathbb{C}(z)$ the field of rational functions over $\mathbb{C}$ where 
+\[ \mathbb{C}(z)=\left\{\frac{f(z)}{g(z)}: f(z),g(z)\in\mathbb{C}[z]\right\} \]
+where $g(z)$ is not the $0$ polynomial and $\mathbb{C}[z]$ is the set of all polynomials over $\mathbb{C}$.
+\end{definition}
+
+\begin{theorem}
+Suppose $f:\mathbb{C_{\infty}}\to\mathbb{C_{\infty}}$ is a meromorphic function then $f$ is a rational function.
+\end{theorem}
+
+\begin{proof}
+More details and further ideas about the second inclusion proved can be found at \cite{Meromorphic proof}.
+ We can prove this by showing that $\mathcal{M}(\mathbb{C}_{\infty})=\mathbb{C}(z)$.
+ Firstly, we prove that $\mathbb{C}(z)\subseteq\mathcal{M}(\mathbb{C}_{\infty})$. Let $f(z)\in\mathbb{C}(z)$ with $f(z)=\frac{g(z)}{h(z)}$. Then it is trivial that $f$ is meromorphic on $\mathbb{C}$, as the only points where $f$ is possibly not holomorphic is at the zeros of $h(z)$ and $h$ has exactly $deg(h)$ roots counting multiplicities by the Fundamental Theorem of Algebra \cite[p.~97]{CA}. Next we check whether $f(\frac{1}{z})$ is meromorphic at $0$ as this is equivalent to $f(z)$ being meromorphic at $\infty$. Since $h$ is a polynomial we have that $h(z)=a_{n}z^{n}+a_{n-1}z^{n-1}+...+a_{1}z+a_{0}$ where each $a_{i}\in\mathbb{C}$ and then we have that $h(\frac{1}{z})=\frac{a_{n}}{z^{n}}+\frac{a_{n-1}}{z^{n-1}}+...+\frac{a_{1}}{z}+a_{0}$ which means $h(\frac{1}{z})$ has a pole of order $n$ at $z=0$ and this in turn means that $f(\frac{1}{z})$ is meromorphic at the point $z=0$. Now, the pole of $h(\frac{1}{z})$ at $z=0$ corresponds to a zero of $h(z)$ at $\infty$ and since the only points where $f$ is not holomorphic are the zeros of $h(z)$ we have that $f(z)$ is meromorphic at $\infty$. Hence, $f(z)\in\mathcal{M}(\mathbb{C}_{\infty})$ and therefore $\mathbb{C}(z)\subseteq\mathcal{M}(\mathbb{C}_{\infty})$. 
+ 
+
+ Next, we prove the inclusion $\mathcal{M}(\mathbb{C}_{\infty})\subseteq\mathbb{C}(z)$.
+ Let $f\in\mathcal{M}(\mathbb{C}_\infty).$ Then we have that $f$ has finitely many zeros and finitely many poles because $\mathbb{C}_{\infty}$ is compact. Then we let $\gamma_{1},...,\gamma_{n}$ be zeros of $f$ with the order of each zero given by $ord_{\gamma_{i}}(f)=e_{i}$ for each $i=1,..,n$. Similarly, we let $p_{1},...,p_{m}$ be the poles of $f$ with the order of each pole given by $ord_{p_{j}}(f)=-k_{i}$.
+ Next, we consider consider the function $G(Z)\in\mathbb{C}(z)$ defined by \[G(z)=\frac{\displaystyle\prod_{i=1}^{n}(z-\gamma_{i})^{e_{i}}}{\displaystyle \prod_{j=1}^{m}(z-p_{j})^{k_{j}}}.\]
+ We have that $\frac{1}{G}\in\mathbb{C}(z)$ is meromorphic on  $\mathbb{C}_{\infty}$, since the roles of the zeros and poles are reversed so the zeros become poles and there are still finitely many of both the poles and zeros. We let $h=\frac{f}{G}$, so that $h\in\mathcal{M}(\mathbb{C}_{\infty})$. By the definition of $h$ we have that $ord_{p_{i}}(h)=0$ for all $i=1,...,n$. Also $h$ has no zeros and furthermore $h$ is entire. So because $h$ is entire we can write $h$ as \[h(z)=\sum_{n=0}^{\infty}a_{n}z^{n},\] we can start the sum at $n=0$ because $h$ is entire so it has no poles in $\mathbb{C}$ so the principal part of the sum (defined in \eqref{eq:4.3}) is zero. In particular, $h$ is meromorphic at $\infty$ so $h(\frac{1}{z})$ is meromorphic at $0$ and we can express $h(\frac{1}{z})$ as \[h\Big(\frac{1}{z}\Big)=\sum_{n=0}^{\infty} a_{n}z^{-n}.\] Since $h$ is entire it must have finite order at $\infty$ so therefore $a_{n}=0$ for sufficiently large $n$, meaning that $h$ is a polynomial. Then from above we have that $h(z)$ has no zeros on $\mathbb{C}$ so by the Fundamental Theorem of Algebra\cite[p.~97]{CA}, we have that $h$ is a constant polynomial say $h(z)=\alpha$.
+ Hence, \[h(z)=\alpha=\frac{f(z)}{G(z)}, \text{ so we have } f(z)=\alpha G(z)= \alpha \frac{\displaystyle\prod_{i=1}^{n}(z-\gamma_{i})^{e_{i}}}{\displaystyle\prod_{j=1}^{m} (z-p_{j})^{k_{j}}}.\]
+ Therefore, as both the numerator and denominator of the fraction above are polynomials in $z$, we have $f(z)\in\mathbb{C}(z)$, so $\mathcal{M}(\mathbb{C}_{\infty})\subseteq\mathbb{C}(z)$.
+ \end{proof}
+
+\begin{thebibliography}{}
+\bibitem{setup}
+\url{http://www.euclideanspace.com/maths/geometry/space/surfaces/manifold/stereographic/index.html} [Accessed 10/11/2017].
+ 
+\bibitem{Visual Complex Analysis}
+ Tristan Needham.
+ \textit{Visual Complex Analysis.}
+ Oxford University Press, 1997.
+ 
+\bibitem{CAaRS}
+ Wilhelm Schlag.
+ \textit{A Course in Complex Analysis and Riemann Surfaces.}
+ Graduate Studies in Mathematics volume; volume 154, American Mathematical Society, 1969.
+ 
+ \bibitem{CVaA}
+ Brown, Churchill.
+ \textit{Complex Variables And Applications.}
+ 9th edition.
+ New York ; London : McGraw-Hill, 2013.
+ 
+ \bibitem{CA}
+ E.Freitag, R.Busam
+ \textit{Complex Analysis.}
+ 2nd edition.
+ Berlin ; Heidelberg : Springer, cop. 2009.
+ 
+ \bibitem{HAP}
+ H.A.Priestly.
+ \textit{Introduction to Complex Analysis.}
+ Revised edition.
+ Oxford University Press,
+ 1990.
+ 
+ \bibitem{Krantz}
+ Steven G. Krantz
+ \textit{Handbook of Complex Variables.}
+ Birkh\"auser Boston, 1999.
+ 
+ \bibitem{Meromorphic proof}
+ Alex Youcis.
+\textit{Meromorphic Functions on the Riemann Sphere (Pt. I).}
+Available from:\url{https://drexel28.wordpress.com/2012/10/07/meromorphic-functions-on-the-riemann-sphere-pt-i/} \newline [Accessed 20/01/2018]
+
+\bibitem{3.4proof1}
+\url{http://www.math.cornell.edu/~boyang/2220\%20s2017/math2220_notes/notes_sec_2.1.pdf} \newline [Accessed 18/01/2018]
+
+\bibitem{3.4proof2}
+\url{http://www.cs.bsu.edu/~fischer/math345/stereo.pdf} [Accessed 18/01/2018]
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage[margin=1.0in]{geometry}
+
+\title{Insta maths (1) 2022.10.20}
+\author{jpn514 }
+\date{20th October 2022}
+
+\begin{document}
+\begin{center}
+\huge\underline{\textbf{Some Homeomorphisms}}\newline
+\end{center}
+
+\begin{enumerate}[label=(\roman*)]
+
+\item 
+ Prove there exists a homeomorphism $f:(0,2)\to(0,18)$.
+\newline
+\begin{proof}
+Remember that a $homeomorphism$ is a bijective continuous function whose inverse is also continuous.
+From this we consider the $f$ as follows, 
+$$ f: x \mapsto 9x \text{ for } x\in(0,2) $$ which then allows us to define 
+$$ f^{-1}:(0,18)\to(0,2) \text{ by } f^{-1}(y)=\frac{y}{9}\text{.} $$
+
+Now, since $f$,$f^{-1}$ are both polynomials, they are continuous on $\mathbb{R}$ so are clearly continuous on the subset of $\mathbb{R}$ we are working in. To show $f$ is bijective recall that a polynomial $P(x)$ is bijective if and only if $P'(x)$ never changes sign. We can see that $f'(x)=9$, which is constant implying that $f$ is bijective. Therefore, we have that $f$ is a homeomorphism.
+\end{proof}
+
+\item 
+Prove there exists a homeomorphism $f:\mathbb{R}\to(-37,37)$.
+\newline
+\newline Before continuing it is helpful to note that functions with asymptotic properties are effective when considering $\mathbb{R}$ as one of the sets. Below we shall work with some trigonometric functions with the required properties.
+\begin{proof}
+We define $f:\mathbb{R}\to(-37,37)$ as follows,
+$$f(x)=\frac{74}{\pi}\arctan{(x)}$$ which is a continuous and bijective function. It follows that its inverse $f^{-1}(y)=\tan{\Big(\frac{\pi y}{74}\Big)}$ is continuous also because it is the composition of trigonometric and polynomial functions.
+\end{proof}
+
+\item
+Does there exist a homeomorphism $f:\mathbb{R}\to[-1,1]$?
+\begin{proof}
+Suppose there does exist a homeomorphism $f:\mathbb{R}\to[-1,1]$ and consider its inverse \newline $f^{-1}:[-1,1]\to\mathbb{R}$ which would necessarily be a continuous and bijective function. However, given $f^{-1}$ is continuous and $[-1,1]$ is a closed interval, $f^{-1}$ is bounded and attains a maximum and a minimum by the Extreme Value Theorem and therefore cannot be surjective. Thus, no such homeomorphism exists.
+\end{proof}
+
+\end{enumerate}
+
+\end{document}

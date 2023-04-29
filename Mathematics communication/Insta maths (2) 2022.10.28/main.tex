@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage[a5paper, total={4in, 5in}]{geometry}
+
+\title{Insta maths (2) 2022.10.28}
+\author{jpn514 }
+\date{October 2022}
+
+\newtheorem*{theorem}{Theorem}
+
+\begin{document}
+\begin{center}
+\huge\underline{\textbf{Cauchy Sequences}}\newline
+\huge\underline{\textbf{and Convergence}}\newline
+\end{center}
+
+\begin{theorem}[Cauchy's Convergence Criterion]
+A sequence $(x_{n})_{n=1}^{\infty}$ of real numbers converges if and only if $(x_{n})_{n=1}^{\infty}$ is a Cauchy sequence.
+\end{theorem}
+\begin{proof}
+$(\implies)$\newline
+Firstly, let $(x_{n})_{n=1}^{\infty}$ be a sequence of real numbers and suppose it converges to a limit $L\in\mathbb{R}$. That is,
+$$\forall\epsilon>0\text{, there exists }N\in\mathbb{N}\text{ such that }
+\forall n\geq N\text{, } \vert{x_{n}-L}\vert<\frac{\epsilon}{2}.$$
+From this, take $n,m\geq N$ then use the triangle inequality to deduce 
+$$\vert{x_{n}-x_{m}}\vert\leq\vert{x_{n}-L}\vert+\vert{x_{m}-L}\vert<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon\text{.}$$
+Thus, $(x_{n})_{n=1}^{\infty}$ is a Cauchy sequence of real numbers.\newline
+
+$(\impliedby)$
+Suppose now the converse, that $(x_{n})_{n=1}^{\infty}$ is a Cauchy sequence of real numbers.
+We will prove convergence in two steps as follows:
+\begin{enumerate}[label=(\roman*)]
+    \item $(x_{n})_{n=1}^{\infty}$ is bounded.
+    \item $x_n\to L$ as $n\to\infty$.
+\end{enumerate}
+
+\begin{proof}[Proof of (i)]
+Let $\epsilon=1$. Since $(x_{n})_{n=1}^{\infty}$ is a Cauchy sequence, we have 
+\begin{align}
+\vert x_{n}-x_{m}\vert<1\text{, } \forall n,m\geq N\text{.}\label{eq:(1)}\tag{1}
+\end{align}
+Taking $m=N$, from \eqref{eq:(1)} we have,
+$$\big\vert \vert x_{n}\vert -\vert x_{N}\vert \big\vert \leq \vert x_{n}-x_{N}\vert <1 \text{, }\forall n\geq N\text{.}$$
+Hence, 
+\begin{align}
+\vert x_{n}\vert < 1 + \vert x_{N}\vert \text{, } \forall n\geq N\text{.}\label{eq:(2)}\tag{2}
+\end{align}
+
+Now, let $K=\max\{\vert x_{1} \vert, \vert x_{2} \vert, ..., 1+\vert x_{N} \vert\}$. Then using \eqref{eq:(2)} and $K$ we deduce $\vert x_{n} \vert\leq K\text{, } \forall n\in\mathbb{N}$. Thus, $(x_{n})_{n=1}^{\infty}$ is a bounded sequence of real numbers.
+\end{proof}
+
+\begin{proof}[Proof of (ii)]
+From the boundedness of $(x_{n})_{n=1}^{\infty}$ and the Bolzano-Weierstrass Theorem, we have existence of a convergent subsequence $(x_{n_{i}})_{i=1}^{\infty}$ where $x_{n_{i}}\to L$ as $i\to\infty$ for some real number $L$. 
+
+Let $\epsilon > 0$. From the convergence of the subsequence, there exists $I_{1}\in\mathbb{N}$ such that, 
+\begin{align}
+\vert x_{n_{i}}-L\vert<\frac{\epsilon}{2}\text{, }\forall i\geq I_{1}\text{.}\label{eq:(3)}\tag{3}
+\end{align}
+
+Furthermore, as $(x_{n})_{n=1}^{\infty}$ is a Cauchy sequence we have,
+\begin{align}
+\exists N_{1}\in\mathbb{N} \text{ such that } \vert x_{n}-x_{m}\vert< \frac{\epsilon}{2}\text{, } \forall n,m\geq N_{1}\text{.}\label{eq:(4)}\tag{4}
+\end{align}
+
+Next, choose $I_{2}\in\mathbb{N}$ such that $I_{2}\geq I_{1}$ and $n_{I_{2}}\geq N_{1}$. 
+Set $N_{2}=n_{I_{2}}$. Then when $n\geq N_{2}$, we use \eqref{eq:(3)} and \eqref{eq:(4)} to deduce 
+$$\vert x_{n}-L\vert\leq\vert x_{n}-x_{N_{2}}\vert + \vert x_{N_{2}}-L\vert < \frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon\text{.}$$
+Therefore, $x_n\to L$, as $n\to\infty$ and because $\epsilon >0$ is arbitrary, we have that the sequence  $(x_{n})_{n=1}^{\infty}$ converges to a limit $L\in\mathbb{R}$.
+\end{proof}
+Having proved both (i) and (ii) we have shown the given Cauchy sequence of real numbers converges to a real number $L$ and this concludes the proof.
+
+\end{proof}
+
+\end{document}

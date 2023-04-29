@@ -1,0 +1,129 @@
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+% Theme choice:
+\usetheme{Copenhagen}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage[absolute,overlay]{textpos}
+\graphicspath{ {./images/} }
+
+% Title page details: 
+\title{Riemann Sphere, Part $1$} 
+
+\author{}
+\date{}
+\logo{\large \LaTeX{}}
+
+
+\newtheorem*{remark}{Remark}
+\newtheorem{prop}{Proposition}[section]
+\newtheorem*{notation}{Notation}
+\newtheorem*{ex}{Examples:}
+
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+    
+    \begin{wrapfigure}{r}{0.25\textwidth}
+    \centering
+    \includegraphics[width=0.25\textwidth]{images/sphere.jpg}
+    
+    
+\end{wrapfigure}
+\begin{textblock*}{10cm}(1cm,4.5cm)
+This investigates:
+\begin{enumerate}
+        \item Extended Complex Numbers
+        \item Stereographic Projection
+        \item Correspondence 
+        \item Visual Representation
+    \end{enumerate}
+\end{textblock*}    
+\end{frame}
+
+% Remove logo from the next slides
+\logo{}
+
+
+% Outline frame
+\begin{frame}{Introduction}
+The Riemann sphere, named after German mathematician Bernhard Riemann, is a representation of the extended complex numbers. We denote the extended complex numbers as $\mathbb{C}_{\infty}=\mathbb{C}\cup\{\infty\}$, which is simply the complex plane together with a point at $\infty$. Riemann introduced an elegant geometric representation of this by representing all points of $\mathbb{C}$ and the point at $\infty$ on a sphere.
+\end{frame}
+
+
+% Lists frame
+\section{}
+\begin{frame}{Arithmetic operations in $\mathbb{C}_{\infty}$}
+We define the following for any $z\in\mathbb{C}$:
+\begin{enumerate}
+    \item Addition: $z+\infty=\infty$
+    \item Multiplication: $z\times\infty=\infty$
+    \item Further operations: for all $z\in\mathbb{C}\setminus\{0\}$:
+    $\frac{z}{0}=\infty$, $\frac{z}{\infty}=0$
+    \item We define $\frac{0}{\infty}=0$ and $\frac{\infty}{0}=\infty$.
+\end{enumerate} 
+
+
+
+   Note that $\frac{0}{0}$ and $\frac{\infty}{\infty}$ are not defined.
+     $\mathbb{C_{\infty}}$ is not a field due to there being no multiplicative inverse for $\infty$.
+
+
+\end{frame}
+    
+\begin{frame}{Stereographic Projection}
+We look at the relationship between points on the sphere $\Sigma$ of unit radius and points in the extended complex plane. 
+Throughout we consider the complex plane placed horizontally in space, with the plane oriented in such a way that a rotation of $\frac{\pi}{2}$ anticlockwise takes us from $1$ to $i$. Then we place $\Sigma$ centred at the origin in $\mathbb{C}$ so that the intersection between $\Sigma$ and $\mathbb{C}$ is the unit circle in $\mathbb{C}$ which runs along the equator of the sphere. A stereographic projection, defined in the following slides, will be used to assign points of $\mathbb{C}_{\infty}$ to the sphere $\Sigma$. This stereographic image is a one-to-one correspondence between points in $\mathbb{C}$ and $\Sigma$. 
+\end{frame} 
+
+\begin{frame}{Stereographic Projection}
+\begin{remark}
+The south pole of $\Sigma$ is the point $(0,0,-1)$ and the north pole of $\Sigma$ is the point $(0,0,1)$ if we described the setup in Cartesian coordinates.
+\end{remark}
+
+\subsubsection{Some background}
+The stereographic projection method was first used by Ptolemy to map positions of astronomical objects on the celestial sphere.  This gave Ptolemy a way to map objects in the sky to points on the sphere, as they are seen by an observer on Earth.
+\end{frame}
+
+\begin{frame}{Correspondence between points of $\Sigma$ and $\mathbb{C}_{\infty}$}
+To begin with, take a line from the north pole $N$ of $\Sigma$ to any point $p$ in $\mathbb{C}$. 
+\begin{definition}
+The point $\hat{p}$ on $\Sigma$ where the line from $N$ to $p$ intersects $\Sigma$ is called the stereographic image of $p$ on $\Sigma$. 
+\end{definition}
+
+\begin{remark}
+Notice that for any point $p$ in the complex plane as $p$ moves away from the origin in any direction (equivalently for $z\in\mathbb{C}$ we have $|z|\to\infty$) then $\hat{p}$ the stereographic image of $p$ on $\Sigma$ gets closer and closer to $N$ as $p$ gets further away from the origin. From this we define that the stereographic image on $\Sigma$ of $\infty\in\mathbb{C}_{\infty}$ is $N$.
+\end{remark}
+\end{frame}
+
+\begin{frame}{Correspondence between points of $\Sigma$ and $\mathbb{C}_{\infty}$}
+We list some facts arising from the stereographic projection:
+\begin{enumerate}
+    \item The stereographic image on $\Sigma$ of any point $p$ of $\mathbb{C}$ which lies inside the unit circle is on the southern hemisphere of $\Sigma$.
+    \item The stereographic image of 0 on $\Sigma$ is the south pole of $\Sigma$.
+   % \item The stereographic image on $\Sigma$ of any point $p$ on the unit circle is the point $p$ itself. This is because the unit circle coincides with the equator of $\Sigma$ and so the line from $N$ to $p$ intersects $\Sigma$ and $\mathbb{C}$ at the same point, namely $p$.
+    \item The stereographic image on $\Sigma$ of any point $p$ in $\mathbb{C}$ which lies outside of the unit circle is on the northern hemisphere of $\Sigma$.
+    %\item The point $N$ on $\Sigma$ is not the stereographic image of any point in $\mathbb{C}$.
+\end{enumerate}
+\begin{definition}
+Now that we have used stereographic projection to assign points of $\mathbb{C}_{\infty}$ to points of $\Sigma$, we call $\Sigma$ the Riemann sphere.
+\end{definition}
+\end{frame}
+
+
+\begin{frame}{A Visual representation}
+\begin{figure}
+    \centering
+     \includegraphics[scale=0.75]{images/sphere.jpg}
+    
+    \caption{Riemann Sphere}
+    \label{fig:my_label}
+\end{figure}
+\end{frame}
+
+
+\end{document}
